@@ -1,0 +1,7 @@
+@use 'utilities';
+
+:root {
+  .mat-mdc-dialog-container .mat-mdc-dialog-title + .mat-mdc-dialog-content {
+    padding-top: utilities.$spacing-2;
+  }
+}

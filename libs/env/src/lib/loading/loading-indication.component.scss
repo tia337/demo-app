@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@use 'utilities';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-height: utilities.$spacing-2,
+      track-height: utilities.$spacing-2,
+      active-indicator-color: var(--color-bg-3),
+    )
+  );
+}

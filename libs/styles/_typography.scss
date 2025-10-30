@@ -1,0 +1,265 @@
+@use 'sass:math';
+@use 'variables';
+
+@function rem($px) {
+  @return math.div($px, variables.$base-font-size) * 1rem;
+}
+
+@mixin font-regular-10 {
+  font-size: rem(10px);
+  line-height: rem(14px);
+  font-weight: 400;
+}
+
+@mixin font-odds-10 {
+  font-size: rem(10px);
+  line-height: rem(10px);
+}
+
+@mixin font-medium-10 {
+  @include font-regular-10;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-12 {
+  font-size: rem(12px);
+  line-height: rem(16px);
+  font-weight: 400;
+}
+
+@mixin font-btn-12 {
+  font-size: rem(12px);
+  line-height: rem(12px);
+}
+
+@mixin font-medium-12 {
+  @include font-regular-12;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-14 {
+  font-size: rem(14px);
+  line-height: rem(18px);
+  font-weight: 400;
+}
+
+@mixin font-regular-14-lh {
+  font-size: rem(14px);
+  line-height: rem(14px);
+  font-weight: 400;
+}
+
+@mixin font-btn-14 {
+  font-size: rem(14px);
+  line-height: rem(14px);
+  font-weight: 500;
+}
+
+@mixin font-medium-14 {
+  @include font-regular-14;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-14 {
+  @include font-regular-14;
+
+  font-weight: 700;
+}
+
+@mixin font-regular-16 {
+  font-size: rem(16px);
+  line-height: rem(22px);
+  font-weight: 400;
+}
+
+@mixin font-btn-16 {
+  font-size: rem(16px);
+  line-height: rem(16px);
+  font-weight: 500;
+}
+
+@mixin font-medium-16 {
+  @include font-regular-16;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-16 {
+  @include font-regular-16;
+
+  font-weight: 700;
+}
+
+@mixin font-medium-18 {
+  font-size: rem(18px);
+  line-height: rem(21px);
+  font-weight: 500;
+}
+
+@mixin font-bold-18 {
+  font-size: rem(18px);
+  line-height: rem(21px);
+  font-weight: 700;
+}
+
+@mixin font-btn-18 {
+  font-size: rem(18px);
+  line-height: rem(18px);
+  font-weight: 500;
+}
+
+@mixin font-regular-20 {
+  font-size: rem(20px);
+  line-height: rem(26px);
+  font-weight: 400;
+}
+
+@mixin font-bold-20 {
+  @include font-regular-20;
+
+  font-weight: 700;
+}
+
+@mixin font-medium-20 {
+  @include font-regular-20;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-22 {
+  font-size: rem(22px);
+  line-height: rem(26px);
+  font-weight: 700;
+}
+
+@mixin font-regular-24 {
+  font-size: rem(24px);
+  line-height: rem(28px);
+  font-weight: 400;
+}
+
+@mixin font-bold-24 {
+  @include font-regular-24;
+
+  font-weight: 700;
+}
+
+@mixin font-medium-24 {
+  @include font-regular-24;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-28 {
+  font-size: rem(28px);
+  line-height: rem(33px);
+  font-weight: 400;
+}
+
+@mixin font-medium-28 {
+  @include font-regular-28;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-28 {
+  @include font-regular-28;
+
+  font-weight: 700;
+}
+
+@mixin font-regular-32 {
+  font-size: rem(32px);
+  line-height: rem(38px);
+  font-weight: 400;
+}
+
+@mixin font-medium-32 {
+  @include font-regular-32;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-32 {
+  @include font-regular-32;
+
+  font-weight: 700;
+}
+
+@mixin font-regular-36 {
+  font-size: rem(36px);
+  line-height: rem(42px);
+  font-weight: 400;
+}
+
+@mixin font-bold-36 {
+  @include font-regular-36;
+
+  font-weight: 700;
+}
+
+@mixin font-medium-36 {
+  @include font-regular-36;
+
+  font-weight: 500;
+}
+
+@mixin font-bold-40 {
+  font-size: rem(40px);
+  line-height: rem(47px);
+  font-weight: 700;
+}
+
+@mixin font-regular-42 {
+  font-size: rem(42px);
+  line-height: rem(49px);
+}
+
+@mixin font-bold-42 {
+  @include font-regular-42;
+
+  font-weight: 900;
+}
+
+@mixin font-regular-48 {
+  font-size: rem(48px);
+  line-height: rem(56px);
+  font-weight: 400;
+}
+
+@mixin font-bold-48 {
+  @include font-regular-48;
+
+  font-weight: 700;
+}
+
+@mixin font-regular-52 {
+  font-size: rem(52px);
+  line-height: rem(61px);
+}
+
+@mixin font-bold-52 {
+  @include font-regular-52;
+
+  font-weight: 900;
+}
+
+@mixin font-regular-64 {
+  font-size: rem(64px);
+  line-height: rem(75px);
+}
+
+@mixin font-medium-64 {
+  @include font-regular-64;
+
+  font-weight: 700;
+}
+
+@mixin font-bold-64 {
+  @include font-regular-64;
+
+  font-weight: 900;
+}

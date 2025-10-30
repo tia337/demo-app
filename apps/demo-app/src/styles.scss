@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'reset';
+@use 'colors';
+@use 'snackbar';
+@use 'variables';
+@use 'dialog';
+
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$orange-palette,
+    typography: Roboto,
+    density: 0
+  ));
+}
+
+body {
+  font-family: variables.$font-family-roboto;
+  font-size: variables.$base-font-size;
+}

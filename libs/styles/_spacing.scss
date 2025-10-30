@@ -1,0 +1,92 @@
+@use 'typography';
+
+$spacing-1: typography.rem(4px);
+$spacing-2: typography.rem(8px);
+$spacing-3: typography.rem(12px);
+$spacing-4: typography.rem(16px);
+$spacing-5: typography.rem(24px);
+$spacing-6: typography.rem(32px);
+$spacing-7: typography.rem(40px);
+$spacing-8: typography.rem(48px);
+$spacing-9: typography.rem(64px);
+$spacing-10: typography.rem(128px);
+$spacings: (
+  s1: $spacing-1,
+  s2: $spacing-2,
+  s3: $spacing-3,
+  s4: $spacing-4,
+  s5: $spacing-5,
+  s6: $spacing-6,
+  s7: $spacing-7,
+  s8: $spacing-8,
+  s9: $spacing-9,
+  s10: $spacing-10,
+);
+
+@mixin padding($top, $right: false, $bottom: false, $left: false) {
+  @if $top {
+    @if map-has-key($spacings, $top) {
+      padding-top: map-get($spacings, $top);
+    } @else {
+      padding-top: typography.rem($top);
+    }
+  }
+
+  @if $right {
+    @if map-has-key($spacings, $right) {
+      padding-right: map-get($spacings, $right);
+    } @else {
+      padding-right: typography.rem($right);
+    }
+  }
+
+  @if $bottom {
+    @if map-has-key($spacings, $bottom) {
+      padding-bottom: map-get($spacings, $bottom);
+    } @else {
+      padding-bottom: typography.rem($bottom);
+    }
+  }
+
+  @if $left {
+    @if map-has-key($spacings, $left) {
+      padding-left: map-get($spacings, $left);
+    } @else {
+      padding-left: typography.rem($left);
+    }
+  }
+}
+
+@mixin margin($top, $right: false, $bottom: false, $left: false) {
+  @if $top {
+    @if map-has-key($spacings, $top) {
+      margin-top: map-get($spacings, $top);
+    } @else {
+      margin-top: typography.rem($top);
+    }
+  }
+
+  @if $right {
+    @if map-has-key($spacings, $right) {
+      margin-right: map-get($spacings, $right);
+    } @else {
+      margin-right: typography.rem($right);
+    }
+  }
+
+  @if $bottom {
+    @if map-has-key($spacings, $bottom) {
+      margin-bottom: map-get($spacings, $bottom);
+    } @else {
+      margin-bottom: typography.rem($bottom);
+    }
+  }
+
+  @if $left {
+    @if map-has-key($spacings, $left) {
+      margin-left: map-get($spacings, $left);
+    } @else {
+      margin-left: typography.rem($left);
+    }
+  }
+}

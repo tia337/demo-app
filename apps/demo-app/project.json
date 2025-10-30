@@ -4,27 +4,36 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/demo-app/src",
-  "tags": [],
+  "tags": ["type:application"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/demo-app",
-        "browser": "apps/demo-app/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/demo-app/tsconfig.app.json",
+        "outputPath": "dist/apps/{projectName}",
+        "index": "{projectRoot}/src/index.html",
+        "browser": "{projectRoot}/src/main.ts",
+        "tsConfig": "{projectRoot}/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "outputHashing": "all",
+        "styles": ["{projectRoot}/src/styles.scss"],
+        "scripts": [],
         "assets": [
-          {
-            "glob": "**/*",
-            "input": "apps/demo-app/public"
-          }
+          "{projectRoot}/src/favicon.ico",
+          "{projectRoot}/src/assets"
         ],
-        "styles": ["apps/demo-app/src/styles.scss"]
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/styles"]
+        }
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "{projectRoot}/src/app/app.config.ts",
+              "with": "{projectRoot}/src/app/app.config.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",
@@ -52,38 +61,19 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "demo-app:build:production"
+          "buildTarget": "{projectName}:build:production"
         },
         "development": {
-          "buildTarget": "demo-app:build:development"
+          "buildTarget": "{projectName}:build:development"
         }
       },
       "defaultConfiguration": "development"
-    },
-    "extract-i18n": {
-      "executor": "@angular/build:extract-i18n",
-      "options": {
-        "buildTarget": "demo-app:build"
-      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
-      "options": {
-        "reportsDirectory": "../../coverage/apps/demo-app"
-      }
-    },
-    "serve-static": {
-      "continuous": true,
-      "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "demo-app:build",
-        "staticFilePath": "dist/apps/demo-app/browser",
-        "spa": true
-      }
+      "executor": "@nx/vite:test"
     }
   }
 }

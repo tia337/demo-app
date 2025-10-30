@@ -1,0 +1,41 @@
+<app-loading />
+
+<mat-toolbar>
+  <button
+    matIconButton
+    (click)="snav.toggle()"
+    class="icon"
+    aria-label="menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Demo app</span>
+  <span class="spacer"></span>
+  <button matIconButton [matMenuTriggerFor]="menu" aria-label="menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>My profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #snav mode="side" fixedTopGap="56">
+    <mat-nav-list>
+      @for (nav of navItems; track nav) {
+      <a mat-list-item [routerLink]="nav.link">{{ nav.label }}</a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,28 @@
+:root {
+  // Theme colors
+  --theme-color-1: #fff;
+  --theme-color-2: #ff8e36;
+  --theme-color-3: #ffdcc7;
+
+  // Highlight
+  --color-highlight-text: #ffe43a;
+
+  // General state
+  --color-state-danger: #ff3b2d;
+  --color-state-success: #69ab86;
+  --color-state-warning: #db9c56;
+
+  // General background
+  --color-bg-3: var(--theme-color-3);
+
+  // General typography
+  --color-typography-1: var(--theme-color-1);
+  --color-typography-3: var(--theme-color-3);
+
+  // Body
+  --color-bg-body: var(--color-bg-3);
+
+  // Snack bar
+  --color-snackbar-text: var(--color-typography-1);
+  --color-snackbar-bg: var(--theme-color-3);
+}

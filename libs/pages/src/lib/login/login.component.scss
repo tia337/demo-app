@@ -1,0 +1,29 @@
+@use 'utilities';
+
+:host {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-3);
+
+  .login-card__header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .login-card__content {
+    padding-top: utilities.$spacing-4;
+  }
+
+  .login-card__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+  }
+
+  .login-card__button {
+    width: utilities.$spacing-9;
+    height: utilities.$spacing-9;
+  }
+}

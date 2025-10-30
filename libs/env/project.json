@@ -1,0 +1,13 @@
+{
+  "name": "env",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/env/src",
+  "prefix": "app",
+  "projectType": "library",
+  "tags": ["type:env"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
