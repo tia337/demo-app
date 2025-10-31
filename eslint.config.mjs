@@ -42,29 +42,34 @@ export default tseslint.config(
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
           depConstraints: [
             {
-              sourceTag: 'type:env',
-              onlyDependOnLibsWithTags: ['type:env'],
+              sourceTag: 'type:application',
+              onlyDependOnLibsWithTags: ['type:feature', 'type:env'],
             },
             {
-              sourceTag: 'type:shared',
-              onlyDependOnLibsWithTags: ['type:shared'],
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: [
+                'type:feature',
+                'type:ui',
+                'type:data-access',
+                'type:env',
+                'type:util'
+              ]
+            },
+            {
+              sourceTag: 'type:ui',
+              onlyDependOnLibsWithTags: ['type:ui', 'type:util', 'type:data-access']
+            },
+            {
+              sourceTag: 'type:env',
+              onlyDependOnLibsWithTags: [],
             },
             {
               sourceTag: 'type:data-access',
               onlyDependOnLibsWithTags: ['type:data-access', 'type:env'],
             },
             {
-              sourceTag: 'type:feature',
-              onlyDependOnLibsWithTags: [
-                'type:feature',
-                'type:shared',
-                'type:data-access',
-                'type:env',
-              ],
-            },
-            {
-              sourceTag: 'type:application',
-              onlyDependOnLibsWithTags: ['type:feature', 'type:env'],
+              sourceTag: 'scope:shared',
+              onlyDependOnLibsWithTags: ['scope:shared'],
             },
           ],
         },

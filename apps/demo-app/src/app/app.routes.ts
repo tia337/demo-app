@@ -24,7 +24,7 @@ export const appRoutes: Route[] = [
           },
           {
             path: 'foo',
-            loadComponent: () => import('@demo-app/foo'),
+            loadComponent: () => import('@demo-app/foo/feat-cat'),
             title: 'Foo',
             canActivate: [permissionsGuard],
             data: { requiredView: PermissionView.FOO_VIEW },

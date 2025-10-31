@@ -1,16 +1,16 @@
 {
-  "name": "foo",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/foo/src",
+  "name": "foo-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/foo/foo-ui/src",
   "prefix": "app",
   "projectType": "library",
-  "tags": ["type:feature"],
+  "tags": ["type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/libs/foo"
+        "reportsDirectory": "../../coverage/libs/foo/foo-ui"
       }
     },
     "lint": {
