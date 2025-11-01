@@ -34,6 +34,11 @@
       "options": {
         "passWithNoTests": true
       }
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
@@ -45,10 +50,17 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "vitest"
+      "unitTestRunner": "vitest",
+      "prefix": "app",
+      "style": "scss",
+      "tags": "type: feature"
     },
     "@nx/angular:component": {
-      "style": "scss"
+      "changeDetection": "OnPush",
+      "exportDefault": true,
+      "prefix": "app",
+      "style": "scss",
+      "type": "component"
     }
   }
 }
