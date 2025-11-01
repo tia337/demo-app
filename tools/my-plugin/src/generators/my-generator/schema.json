@@ -6,12 +6,30 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
+      "description": "The name of the library.",
       "$default": {
         "$source": "argv",
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the library is placed.(Default: libs/<name>)",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What directory would you like to use? (Default: libs/<name>)"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the library (used for linting)",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "Do you want to add tags to the library? (used for linting)"
     }
   },
   "required": ["name"]

@@ -19,7 +19,7 @@ export default async function myGeneratorGenerator(
     projectType: 'library',
     sourceRoot: `${projectRoot}/src`,
     targets: {},
-    tags: options.tags ?? []
+    tags: options.tags?.split(',') ?? []
   });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
   await formatFiles(tree);
