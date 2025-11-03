@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatAnchor, MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { APP_HOME } from '@demo-app/env';
+import { APP_HOME } from '@demo-app/pages-util';
 
 @Component({
   selector: 'app-not-found',

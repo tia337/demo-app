@@ -28,7 +28,7 @@ export default tseslint.config(
           groups: [
             ['^\\u0000', '^node:'],
             ['^'],
-            ['^@app/'],
+            ['^@demo-app/'],
             ['^#', '^\\.\\.', '^\\.'],
           ],
         },
@@ -52,12 +52,16 @@ export default tseslint.config(
                 'type:ui',
                 'type:data-access',
                 'type:env',
-                'type:util'
-              ]
+                'type:util',
+              ],
             },
             {
               sourceTag: 'type:ui',
-              onlyDependOnLibsWithTags: ['type:ui', 'type:util', 'type:data-access']
+              onlyDependOnLibsWithTags: [
+                'type:ui',
+                'type:util',
+                'type:data-access',
+              ],
             },
             {
               sourceTag: 'type:env',

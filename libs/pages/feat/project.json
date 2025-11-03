@@ -1,7 +1,7 @@
 {
-  "name": "pages",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/pages/src",
+  "name": "pages-feat",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/pages/feat/src",
   "prefix": "app",
   "projectType": "library",
   "tags": ["type:feature"],
@@ -10,7 +10,7 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/libs/pages"
+        "reportsDirectory": "../../../coverage/libs/pages/feat"
       }
     },
     "lint": {

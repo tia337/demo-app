@@ -1,11 +1,13 @@
 import { inject } from '@angular/core';
 import type { Route } from '@angular/router';
+
 import {
   AuthService,
   permissionsGuard,
   PermissionsService,
 } from '@demo-app/auth';
-import { APP_HOME, PermissionView } from '@demo-app/env';
+import { PermissionView } from '@demo-app/env';
+import { APP_HOME } from '@demo-app/pages-util';
 
 export const appRoutes: Route[] = [
   {
@@ -15,7 +17,7 @@ export const appRoutes: Route[] = [
       {
         path: '',
         loadComponent: () =>
-          import('@demo-app/pages').then(m => m.LayoutComponent),
+          import('@demo-app/pages-feat').then(m => m.LayoutComponent),
         children: [
           {
             path: '',
@@ -51,7 +53,7 @@ export const appRoutes: Route[] = [
           {
             path: '**',
             loadComponent: () =>
-              import('@demo-app/pages').then(m => m.NotFoundComponent),
+              import('@demo-app/pages-feat').then(m => m.NotFoundComponent),
             title: 'Not Found',
           },
         ],
@@ -60,6 +62,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '**',
-    loadComponent: () => import('@demo-app/pages').then(m => m.LoginComponent),
+    loadComponent: () =>
+      import('@demo-app/pages-feat').then(m => m.LoginComponent),
   },
 ];

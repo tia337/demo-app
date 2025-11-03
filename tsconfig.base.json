@@ -25,7 +25,8 @@
     "paths": {
       "@demo-app/auth": ["libs/auth/src/index.ts"],
       "@demo-app/env": ["libs/env/src/index.ts"],
-      "@demo-app/pages": ["libs/pages/src/index.ts"],
+      "@demo-app/pages-feat": ["libs/pages/feat/src/index.ts"],
+      "@demo-app/pages-util": ["libs/pages/util/src/index.ts"],
       "@demo-app/bar": ["libs/bar/src/index.ts"],
       "@demo-app/foo/feat-cat": ["libs/foo/feat-cat/src/index.ts"],
       "@demo-app/foo/data-access": ["libs/foo/data-access/src/index.ts"],

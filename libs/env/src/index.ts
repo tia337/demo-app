@@ -2,7 +2,6 @@ export { API_HOST } from './lib/env/api-host';
 export { FrontTitleStrategy } from './lib/env/front-title-strategy.service';
 export { IS_PRODUCTION } from './lib/env/is-production';
 export { loadEnvConfig } from './lib/env/load-env-config';
-export { APP_HOME } from './lib/front/app-home';
 export { APP_LOGO } from './lib/front/app-logo';
 export { LOGIN_URL } from './lib/front/login-url';
 export type { PermissionListType } from './lib/front/permissions';
