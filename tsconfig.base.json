@@ -23,7 +23,6 @@
     "resolveJsonModule": true,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@demo-app/auth": ["libs/auth/src/index.ts"],
       "@demo-app/env": ["libs/env/src/index.ts"],
       "@demo-app/pages-feat": ["libs/pages/feat/src/index.ts"],
       "@demo-app/pages-util": ["libs/pages/util/src/index.ts"],

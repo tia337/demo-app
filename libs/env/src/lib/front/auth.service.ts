@@ -2,8 +2,8 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { parseAccessJwt } from './jwt/parse-access-jwt';
-import { User } from './user';
+import { AccessJwtPayload } from '../jwt/access-jwt-payload';
+import { parseAccessJwt } from '../jwt/parse-access-jwt';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -21,7 +21,7 @@ export class AuthService {
     return this.#token();
   });
 
-  readonly user = computed<User>(() => {
+  readonly user = computed<AccessJwtPayload>(() => {
     const token = this.#token();
     if (!token) {
       throw new Error('Token missing. User logged out.');

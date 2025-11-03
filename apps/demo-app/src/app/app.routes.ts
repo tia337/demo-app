@@ -5,8 +5,8 @@ import {
   AuthService,
   permissionsGuard,
   PermissionsService,
-} from '@demo-app/auth';
-import { PermissionView } from '@demo-app/env';
+  PermissionView,
+} from '@demo-app/env';
 import { APP_HOME } from '@demo-app/pages-util';
 
 export const appRoutes: Route[] = [

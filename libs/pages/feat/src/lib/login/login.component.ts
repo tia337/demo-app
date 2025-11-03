@@ -8,7 +8,7 @@ import {
 } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 
-import { AuthService } from '@demo-app/auth';
+import { AuthService } from '@demo-app/env';
 
 @Component({
   selector: 'app-login',

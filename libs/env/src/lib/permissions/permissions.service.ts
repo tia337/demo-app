@@ -1,5 +1,6 @@
 import { computed, inject, Injectable } from '@angular/core';
 
+import { AuthService } from '../front/auth.service';
 import {
   hasReadPermission,
   isViewAllowed,
@@ -7,9 +8,7 @@ import {
   PermissionsByRoleRecord,
   PermissionView,
   Role,
-} from '@demo-app/env';
-
-import { AuthService } from '../auth.service';
+} from './permissions';
 
 @Injectable({ providedIn: 'root' })
 export class PermissionsService {
@@ -18,8 +17,7 @@ export class PermissionsService {
   readonly roles = computed<Role[]>(() => {
     const userRoles = this.#auth.user().groups;
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!userRoles) {
+    if (!userRoles.length) {
       return [Role.INVALID];
     }
 
