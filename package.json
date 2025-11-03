@@ -10,7 +10,7 @@
     "format": "nx format:write",
     "lint-staged": "npx lint-staged",
     "lint:eslint": "eslint . --quiet --fix",
-    "affected:eslint": "nx affected --base=$NX_BASE --head=$NX_HEAD --targets lint"
+    "affected": "nx affected --base=$NX_BASE --head=$NX_HEAD --t lint test"
   },
   "private": true,
   "dependencies": {
