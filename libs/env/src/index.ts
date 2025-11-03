@@ -5,8 +5,6 @@ export { loadEnvConfig } from './lib/env/load-env-config';
 export { APP_HOME } from './lib/front/app-home';
 export { APP_LOGO } from './lib/front/app-logo';
 export { LOGIN_URL } from './lib/front/login-url';
-export type { NavItem } from './lib/front/nav-items';
-export { BASE_NAV_ITEMS, NAV_ITEMS } from './lib/front/nav-items';
 export type { PermissionListType } from './lib/front/permissions';
 export {
   hasReadPermission,

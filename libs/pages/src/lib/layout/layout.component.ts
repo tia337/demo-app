@@ -8,8 +8,10 @@ import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/mat
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '@demo-app/auth';
-import { LoadingIndicatorComponent, NAV_ITEMS } from '@demo-app/env';
+import { LoadingIndicatorComponent } from '@demo-app/env';
 import { filter, fromEvent, map, merge, startWith, tap } from 'rxjs';
+
+import { NAV_ITEMS } from '../nav-items/nav-items';
 
 @Component({
   selector: 'app-layout',
