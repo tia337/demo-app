@@ -2,6 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+
 import { FooService } from '@demo-app/foo/data-access';
 
 @Component({

@@ -1,4 +1,5 @@
 import { computed, inject, Injectable } from '@angular/core';
+
 import {
   hasReadPermission,
   isViewAllowed,

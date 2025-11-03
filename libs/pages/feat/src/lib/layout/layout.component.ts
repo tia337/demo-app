@@ -16,10 +16,11 @@ import {
 } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { filter, fromEvent, map, merge, startWith, tap } from 'rxjs';
+
 import { AuthService } from '@demo-app/auth';
 import { LoadingIndicatorComponent } from '@demo-app/env';
 import { NAV_ITEMS } from '@demo-app/pages-util';
-import { filter, fromEvent, map, merge, startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'app-layout',

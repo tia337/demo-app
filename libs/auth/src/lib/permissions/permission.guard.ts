@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import type { CanActivateFn, UrlTree } from '@angular/router';
 import { Router } from '@angular/router';
+
 import type { PermissionView } from '@demo-app/env';
 
 import { PermissionsService } from './permissions.service';

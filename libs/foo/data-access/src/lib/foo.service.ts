@@ -1,7 +1,8 @@
 import { HttpClient, httpResource, HttpResourceRef } from '@angular/common/http';
 import { inject, Injectable, WritableSignal } from '@angular/core';
-import { API_HOST } from '@demo-app/env';
 import { Observable } from 'rxjs';
+
+import { API_HOST } from '@demo-app/env';
 
 export interface FooCat {
   created_at: string;

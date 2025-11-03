@@ -43,7 +43,7 @@ export default tseslint.config(
           depConstraints: [
             {
               sourceTag: 'type:application',
-              onlyDependOnLibsWithTags: ['type:feature', 'type:env'],
+              onlyDependOnLibsWithTags: ['type:feature', 'type:env', "type:util"],
             },
             {
               sourceTag: 'type:feature',
@@ -70,6 +70,10 @@ export default tseslint.config(
             {
               sourceTag: 'type:data-access',
               onlyDependOnLibsWithTags: ['type:data-access', 'type:env'],
+            },
+            {
+              sourceTag: 'type:util',
+              onlyDependOnLibsWithTags: ['type:env'],
             },
             {
               sourceTag: 'scope:shared',

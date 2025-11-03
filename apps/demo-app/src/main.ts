@@ -1,5 +1,6 @@
 import { mergeApplicationConfig } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+
 import { loadEnvConfig } from '@demo-app/env';
 
 import { AppComponent } from './app/app';
