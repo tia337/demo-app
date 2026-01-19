@@ -9,7 +9,8 @@
       "vite/client",
       "node",
       "vitest"
-    ]
+    ],
+    "isolatedModules": true
   },
   "include": [
     "vite.config.ts",

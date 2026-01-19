@@ -18,10 +18,7 @@
         "outputHashing": "all",
         "styles": ["{projectRoot}/src/styles.scss"],
         "scripts": [],
-        "assets": [
-          "{projectRoot}/src/favicon.ico",
-          "{projectRoot}/src/assets"
-        ],
+        "assets": ["{projectRoot}/src/favicon.ico", "{projectRoot}/src/assets"],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles"]
         }
@@ -73,7 +70,7 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vite:test"
+      "executor": "@nx/vitest:test"
     }
   }
 }
