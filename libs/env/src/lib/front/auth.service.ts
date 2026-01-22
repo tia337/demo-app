@@ -1,6 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { delay, Observable, of, tap } from 'rxjs';
 
 import { AccessJwtPayload } from '../jwt/access-jwt-payload';
 import { parseAccessJwt } from '../jwt/parse-access-jwt';
@@ -38,13 +39,23 @@ export class AuthService {
     return Date.now() < this.user().exp * 1000;
   });
 
-  login(): void {
-    const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbGxpYSIsImlhdCI6MTc2MTc0ODA1MSwiZXhwIjoxNzk1OTYyNDUxLCJhdWQiOiJsb2NhbGhvc3Q6NDIwMCIsInN1YiI6InN0dWItdXNlckBnbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJKb2huIERvZSIsInVzZXJfZW1haWwiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZ3JvdXBzIjpbImFkbWluIl19.uEVg6Ys7tA2MHVREE5M2r1Ss3dhrur8nGA19RFm-nsI`;
-    localStorage.setItem('access_token', token);
-    this.#token.set(token);
-    this.#router.navigate([], {
-      onSameUrlNavigation: 'reload',
-    });
+  login(): Observable<boolean> {
+    return of(Math.random() > 0.5).pipe(
+      delay(2000),
+      tap(success => {
+        if (!success) {
+          throw new Error('Login failed');
+        }
+
+        const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbGxpYSIsImlhdCI6MTc2MTc0ODA1MSwiZXhwIjoxNzk1OTYyNDUxLCJhdWQiOiJsb2NhbGhvc3Q6NDIwMCIsInN1YiI6InN0dWItdXNlckBnbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJKb2huIERvZSIsInVzZXJfZW1haWwiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZ3JvdXBzIjpbImFkbWluIl19.uEVg6Ys7tA2MHVREE5M2r1Ss3dhrur8nGA19RFm-nsI`;
+
+        localStorage.setItem('access_token', token);
+        this.#token.set(token);
+        this.#router.navigate([], {
+          onSameUrlNavigation: 'reload',
+        });
+      }),
+    );
   }
 
   logout(): void {

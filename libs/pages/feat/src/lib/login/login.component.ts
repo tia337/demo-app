@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
 import {
-  MatCard,
-  MatCardContent,
-  MatCardHeader,
-  MatCardTitle,
-} from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
 
 import { AuthService } from '@demo-app/env';
 
@@ -14,20 +14,33 @@ import { AuthService } from '@demo-app/env';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardContent,
-    MatIcon,
-    MatIconButton,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [FormsModule],
 })
 export class LoginComponent {
   readonly #auth = inject(AuthService);
+  readonly #destroyRef = inject(DestroyRef);
 
-  login(): void {
-    this.#auth.login();
+  readonly email = signal('');
+  readonly password = signal('');
+  readonly backendError = signal<string | null>(null);
+  readonly isLoading = signal(false);
+
+  onSubmit(): void {
+    this.isLoading.set(true);
+
+    this.#auth
+      .login()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: () => this.isLoading.set(false),
+        error: () => {
+          this.backendError.set(
+            'Login failed due to unknown error. Please try again later.',
+          );
+          this.isLoading.set(false);
+        },
+      });
   }
 }
