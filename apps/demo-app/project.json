@@ -21,7 +21,8 @@
         "assets": ["{projectRoot}/src/favicon.ico", "{projectRoot}/src/assets"],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles"]
-        }
+        },
+        "baseHref": "/demo-app/"
       },
       "configurations": {
         "production": {
@@ -71,6 +72,14 @@
     },
     "test": {
       "executor": "@nx/vitest:test"
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy",
+      "options": {
+        "buildTarget": "{projectName}:build:production",
+        "baseHref": "/{projectName}/",
+        "dir": "dist/apps/{projectName}"
+      }
     }
   }
 }

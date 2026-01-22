@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -9,6 +9,8 @@ on:
 permissions:
   actions: read
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   main:
@@ -17,7 +19,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           filter: tree:0
-          # Enables proper affected detection across branches
           fetch-depth: 0
 
       # Enable task distribution via Nx Cloud
@@ -31,9 +32,52 @@ jobs:
 
       - run: npm ci
 
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
+      # Run all tasks
       - run: npx nx run-many -t lint test build
-      # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
+
+      # Nx Cloud recommends fixes for failures
       - run: npx nx fix-ci
         if: always()
+
+      # Upload build artifacts for deployment (only on main branch)
+      - name: Upload build artifact
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: dist/apps/demo-app
+          retention-days: 1
+
+  # Deploy job - only runs after main job succeeds and only on main branch
+  deploy:
+    needs: main
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    # Required for GitHub Pages deployment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
