@@ -76,9 +76,9 @@
     "deploy": {
       "executor": "angular-cli-ghpages:deploy",
       "options": {
-        "buildTarget": "{projectName}:build:production",
+        "buildTarget": "demo-app:build:production",
         "baseHref": "/{projectName}/",
-        "dir": "dist/apps/{projectName}"
+        "dir": "dist/apps/{projectName}/browser"
       }
     }
   }
