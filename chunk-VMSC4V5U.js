@@ -1,0 +1,1 @@
+import{Db as n,Eb as a,Yb as r,gb as o}from"./chunk-POIGR7LF.js";var i=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=o({type:e,selectors:[["app-bar"]],decls:2,vars:0,template:function(t,m){t&1&&(n(0,"p"),r(1,"Bar works!"),a())},encapsulation:2,changeDetection:0})}return e})();var s=i;export{s as default};
