@@ -2,15 +2,12 @@ name: CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
 
 permissions:
   actions: read
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   main:
@@ -18,66 +15,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          filter: tree:0
           fetch-depth: 0
 
-      # Enable task distribution via Nx Cloud
       - run: npx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
-      # Cache node_modules
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
       - run: npm ci
+      - run: npx nx run-many -t lint test
 
-      # Run all tasks
-      - run: npx nx run-many -t lint test build
+      - name: Build
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: npx nx build demo-app --configuration=production
 
-      # Nx Cloud recommends fixes for failures
       - run: npx nx fix-ci
         if: always()
 
-      # Upload build artifacts for deployment (only on main branch)
-      - name: Upload build artifact
+      - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-artifact@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: production-build
-          path: dist/apps/demo-app
-          retention-days: 1
-
-  # Deploy job - only runs after main job succeeds and only on main branch
-  deploy:
-    needs: main
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    # Required for GitHub Pages deployment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    permissions:
-      pages: write
-      id-token: write
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: production-build
-          path: dist
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/demo-app/browser

@@ -72,14 +72,6 @@
     },
     "test": {
       "executor": "@nx/vitest:test"
-    },
-    "deploy": {
-      "executor": "angular-cli-ghpages:deploy",
-      "options": {
-        "buildTarget": "demo-app:build:production",
-        "baseHref": "/{projectName}/",
-        "dir": "dist/apps/{projectName}/browser"
-      }
     }
   }
 }
