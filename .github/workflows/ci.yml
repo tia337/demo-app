@@ -2,7 +2,8 @@ name: CI/CD
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
 
 permissions:
@@ -17,26 +18,34 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Enable task distribution via Nx Cloud
       - run: npx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
+      # Cache node_modules
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
       - run: npm ci
+
+      # Run tests and linting
       - run: npx nx run-many -t lint test
 
-      - name: Build
+      # Build only on main branch
+      - name: Build for production
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: npx nx build demo-app --configuration=production
 
+      # Nx Cloud recommends fixes for failures
       - run: npx nx fix-ci
         if: always()
 
-      - name: Deploy
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/apps/demo-app/browser
+          force_orphan: true
