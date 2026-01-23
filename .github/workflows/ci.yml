@@ -18,7 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          filter: tree:0
           fetch-depth: 0
 
       # Enable task distribution via Nx Cloud
@@ -45,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: production-build
-          path: dist/apps/demo-app
+          path: dist/apps/demo-app/browser
           retention-days: 1
 
   # Deploy job - only runs after main job succeeds and only on main branch
